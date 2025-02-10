@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MovieProvider(),
       child: MaterialApp(
-        title: 'Movie Search',
+        title: 'TheMovieDB.org Search',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

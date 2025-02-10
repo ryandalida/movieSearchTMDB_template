@@ -20,10 +20,22 @@ class MovieDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-              fit: BoxFit.cover,
-            ),
+            movie.posterPath.isNotEmpty
+                ? Image.network(
+                    'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                    fit: BoxFit.cover,
+                  )
+                : Container(
+                    height: 300,
+                    color: Colors.grey,
+                    child: Center(
+                      child: Icon(
+                        Icons.movie,
+                        size: 100,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -46,7 +58,7 @@ class MovieDetailScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'Genres: ${movie.genres.join(', ')}',
+                    'Genres: ${movie.genreIds.map((id) => movieProvider.genres[id] ?? 'Unknown').join(', ')}',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 8),
