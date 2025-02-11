@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
 import 'package:moviesearch_tmdb_template/models/movie.dart';
 import 'package:moviesearch_tmdb_template/models/genre.dart';
 import 'package:sqflite/sqflite.dart';
@@ -128,8 +129,10 @@ class MovieProvider with ChangeNotifier {
   Future<void> loadFavorites() async {
     final databasePath = await getDatabasesPath();
     final path = join(databasePath, 'favorites.db');
-
-    final database = await openDatabase(
+    Database database;
+    bool dbExists = await File(path).exists();
+    if (!dbExists) {
+      database = await openDatabase(
       path,
       version: 1,
       onCreate: (Database db, int version) async {
@@ -138,6 +141,10 @@ class MovieProvider with ChangeNotifier {
         );
       },
     );
+    }
+    else {
+      database = await openDatabase(path, version: 1,);
+    }
 
     final List<Map<String, dynamic>> maps = await database.query('favorites');
     _favorites = List.generate(maps.length, (i) {
@@ -151,6 +158,11 @@ class MovieProvider with ChangeNotifier {
       );
     });
 
+    notifyListeners();
+  }
+
+  Future<void> refreshFavorites() async {
+    await loadFavorites();
     notifyListeners();
   }
 
