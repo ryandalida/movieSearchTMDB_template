@@ -1,16 +1,33 @@
-# moviesearch_tmdb_template
+# Movie Browser App
 
-A new Flutter project.
+The Movie Browser App is a Flutter application that allows users to browse a list of popular movies retrieved from the TMDb API, search for movies by name, view detailed information about a single movie, and favorite movies for offline storage.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Browse a list of popular or trending movies
+- Search for movies by name
+- View detailed information about a single movie
+- Favorite movies and store them offline using sqflite
+- Persistent favorites across app restarts
+- Pull-to-refresh functionality for both movie list and favorites list
+- Error handling for network issues and no results
 
-A few resources to get you started if this is your first Flutter project:
+## Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To install the APK on a physical device:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Download the APK file (TheMovieDB Search.apk) from the releases section (Initial release v1.0.0+1)
+2. On your device, open the file manager and locate the APK file.
+3. Tap on the APK file to start the installation process.
+4. You may need to enable installation from unknown sources in your device settings. Other security measures may also affect the installation so please check and disable.
+
+### Prerequisites
+
+- Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
+- TMDb API Key: [Get an API Key](https://www.themoviedb.org/documentation/api)
+
+### Clone the Repository
+
+```sh
+git clone https://github.com/ryandalida/movieSearchTMDB_template.git
+cd movieSearchTMDB_template
