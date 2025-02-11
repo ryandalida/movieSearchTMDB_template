@@ -31,3 +31,6 @@ To install the APK on a physical device:
 ```sh
 git clone https://github.com/ryandalida/movieSearchTMDB_template.git
 cd movieSearchTMDB_template
+
+TODO:
+There is still something wrong with the persistence of favorites list. It doesn't go across app restarts. Although the actual database file stores the movies, the data is actually inserted if you look at the file manually (DB browser). However the list still gets reset when app is restarted.
